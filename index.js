@@ -67,6 +67,9 @@ function serveFiles(files) {
             res.writeHead(404); // file not found
             return res.end();
         }
+        if (file.contentType) {
+            res.setHeader('content-type', file.contentType);
+        }
         res.writeHead(200);
         res.end(file.contents);
     }
